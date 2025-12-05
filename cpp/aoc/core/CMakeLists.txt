@@ -8,10 +8,12 @@ target_sources(aoc.core PUBLIC
   FILE_SET HEADERS
   BASE_DIRS ${PROJECT_SOURCE_DIR}
   FILES getline_view.hpp
+        input.hpp
         trim.hpp
 )
 target_sources(aoc.core PRIVATE
   getline_view.cpp
+  input.cpp
   trim.cpp
 )
 set_target_properties(aoc.core PROPERTIES
@@ -31,6 +33,7 @@ endif()
 add_executable(aoc.core.tests)
 target_sources(aoc.core.tests PRIVATE
   getline_view.test.cpp
+  input.test.cpp
   trim.test.cpp
 )
 target_link_libraries(aoc.core.tests PRIVATE
