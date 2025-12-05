@@ -5,6 +5,7 @@
 #include <aoc/unit_test/catch2.hpp>
 
 #include <sstream> // istringstream
+#include <aoc/core/trim.hpp>
 
 TEST_CASE("'aoc::views::getline' with empty stream", "[getline_view]")
 {
@@ -44,4 +45,14 @@ TEST_CASE("'aoc::views::getline' with custom delimiter", "[getline_view]")
                    | std::ranges::to<std::vector>();
   REQUIRE_THAT(lines, Catch::Matchers::Equals(
                std::vector<std::string>{"abcd", "fu"}));
+}
+
+TEST_CASE("'aoc::views::getline ' with 'aoc::views::trim'", "[getline_view]")
+{
+  std::istringstream stream{"Line1\n \f  \n \r\tLine3   \n\nLine5\n"};
+  auto const trimmed_lines = aoc::views::getline(stream)
+                           | aoc::views::trim
+                           | std::ranges::to<std::vector<std::string>>();
+  REQUIRE_THAT(trimmed_lines, Catch::Matchers::Equals(
+               std::vector<std::string>{"Line1", "", "Line3", "", "Line5"}));
 }
