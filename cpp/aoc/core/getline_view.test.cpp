@@ -47,7 +47,7 @@ TEST_CASE("'aoc::views::getline' with custom delimiter", "[getline_view]")
                std::vector<std::string>{"abcd", "fu"}));
 }
 
-TEST_CASE("'aoc::views::getline ' with 'aoc::views::trim'", "[getline_view]")
+TEST_CASE("'aoc::views::getline' with 'aoc::views::trim'", "[getline_view]")
 {
   std::istringstream stream{"Line1\n \f  \n \r\tLine3   \n\nLine5\n"};
   auto const trimmed_lines = aoc::views::getline(stream)

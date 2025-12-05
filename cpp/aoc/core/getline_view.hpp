@@ -74,7 +74,7 @@ struct getline_fn
 /******************************************************************************
 * Class aoc::views::getline
 ******************************************************************************/
-// This customization point object for the factory 'aoc::getline_views' is
+// This customization point object for the factory 'aoc::getline_view' is
 // such that 'aoc::views::getline(stream, delim)' is expression-equivalent to
 // 'aoc::getline_view{stream, delim}', and 'aoc::views::getline(stream)' is
 // expression-equivalent to 'aoc::getline_view{stream}'.

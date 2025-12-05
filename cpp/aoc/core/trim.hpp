@@ -3,10 +3,9 @@
 ///////////////////////////////////////////////////////////////////////////////
 // File trim.hpp
 ///////////////////////////////////////////////////////////////////////////////
-// This file contains a mechanism, 'aoc::trim_view', that transforms a range
-// of strings by trimming leading and trailing whitespaces. The related
-// customization point object 'aoc::views::trim' is also available,
-// as well as the 'aoc::trim' function used to trim the strings.
+// This file contains a range adapter, 'aoc::views::trim', that transforms a
+// range of strings by trimming leading and trailing whitespaces, as well as
+// the 'aoc::trim' function used to trim the strings.
 
 #include <ranges> // transform
 #include <string_view>
@@ -23,6 +22,11 @@ auto trim(std::string_view str) -> std::string_view;
 
 namespace views {
 
+/******************************************************************************
+* Class aoc::views::trim
+******************************************************************************/
+// This customization point object is a range adapter that transforms a range
+// of strings by trimming leading and trailing whitespaces, using 'aoc::trim'.
 inline constexpr auto trim = std::views::transform(aoc::trim);
 
 } // namespace views
@@ -43,7 +47,7 @@ auto aoc::trim(std::string_view str) -> std::string_view {
     return {};                                                        // RETURN
   }
   auto const last  = str.find_last_not_of(ws);
-  return str.substr(first, last -first + 1);
+  return str.substr(first, last - first + 1);
 }
 
 #endif // AOC_TRIM_HPP_INCLUDE_GUARD
