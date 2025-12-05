@@ -78,7 +78,7 @@ struct getline_fn
 // such that 'aoc::views::getline(stream, delim)' is expression-equivalent to
 // 'aoc::getline_view{stream, delim}', and 'aoc::views::getline(stream)' is
 // expression-equivalent to 'aoc::getline_view{stream}'.
-constexpr detail::getline_fn getline;
+inline constexpr detail::getline_fn getline;
 
 } // namespace views
 
